@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Vladyslav Dzyhovskyi",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": -238.19,
+      "left": 368.34,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 5.15,
+      "left": 139.09,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd2",
+      "top": 0.66,
+      "left": 491.42,
+      "attrs": { "pins": "i2c", "i2c-address": "0x26" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd3",
+      "top": 168.87,
+      "left": 137.8,
+      "attrs": { "pins": "i2c", "i2c-address": "0x25" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd4",
+      "top": 167.63,
+      "left": 502.71,
+      "attrs": { "pins": "i2c", "i2c-address": "0x24" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "lcd1:GND", "black", [ "v26.68", "h-253.48", "v92.3" ] ],
+    [ "lcd2:GND", "esp:GND.1", "black", [ "h-13.15", "v-91.55", "h-104.43" ] ],
+    [ "esp:VIN", "lcd1:VCC", "red", [ "v-17.64", "h-249.52", "v242.42" ] ],
+    [ "lcd2:VCC", "esp:VIN", "red", [ "h-19.17", "v-93.29", "h-160.71", "v-147.85", "h52.8" ] ],
+    [ "esp:D21", "lcd2:SDA", "green", [ "v0" ] ],
+    [ "esp:D21", "lcd1:SDA", "green", [ "v53.36", "h-354.11", "v84.62" ] ],
+    [ "esp:D22", "lcd2:SCL", "yellow", [ "v64.87", "h-40.01", "v81.68" ] ],
+    [ "esp:D22", "lcd1:SCL", "yellow", [ "v64.75", "h-396.09", "v82.73" ] ],
+    [ "esp:D22", "lcd4:SCL", "yellow", [ "v65.72", "h-39.49", "v247.8" ] ],
+    [ "esp:D22", "lcd3:SCL", "yellow", [ "v64.24", "h-395.76", "v250.52" ] ],
+    [ "esp:D21", "lcd4:SDA", "green", [ "v0" ] ],
+    [ "esp:D21", "lcd3:SDA", "green", [ "v52.84", "h-355.19", "v252.42" ] ],
+    [ "esp:GND.1", "lcd4:GND", "black", [ "v25.66", "h105.6", "v259.36" ] ],
+    [ "esp:GND.1", "lcd3:GND", "black", [ "v25.66", "h-253.71", "v260.6" ] ],
+    [ "esp:VIN", "lcd3:VCC", "red", [ "v-17.62", "h-249.55", "v409.68" ] ],
+    [ "esp:VIN", "lcd4:VCC", "red", [ "h-52.34", "v131.26", "h160.06", "v259.56" ] ]
+  ],
+  "dependencies": {}
+}

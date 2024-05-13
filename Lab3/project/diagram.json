@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Vladyslav Dzyhovskyi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": 199.41,
+      "left": -37.43,
+      "attrs": { "travelLength": "30" }
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 102.41, "left": 225.6, "attrs": {} },
+    { "type": "wokwi-a4988", "id": "drv2", "top": -25.59, "left": 224.87, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": 47.98,
+      "left": 340.28,
+      "attrs": { "size": "17", "arrow": "blue" }
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper2",
+      "top": -184.21,
+      "left": 336.82,
+      "attrs": { "size": "17", "arrow": "yellow" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "pot1:GND", "black", [ "h-43.49", "v58.67", "h208.06" ] ],
+    [ "pot1:SIG", "esp:D25", "green", [ "h-23.78", "v-171.11" ] ],
+    [ "esp:D2", "drv1:DIR", "green", [ "h19.98", "v43.7", "h56.14", "v0.31" ] ],
+    [ "esp:D4", "drv1:STEP", "green", [ "h28.91", "v44.81" ] ],
+    [ "esp:D19", "drv2:DIR", "green", [ "h33.17", "v-25.36", "h95.2" ] ],
+    [ "esp:D21", "drv2:STEP", "green", [ "h26.67", "v-26.09" ] ],
+    [ "drv1:SLEEP", "drv1:RESET", "red", [ "h0" ] ],
+    [ "drv2:SLEEP", "drv2:RESET", "red", [ "h0" ] ],
+    [ "drv2:1B", "stepper2:B-", "green", [ "h0" ] ],
+    [ "stepper2:B+", "drv2:1A", "green", [ "v0" ] ],
+    [ "drv2:2A", "stepper2:A+", "green", [ "h0" ] ],
+    [ "drv2:2B", "stepper2:A-", "green", [ "h0" ] ],
+    [ "drv1:1B", "stepper1:B-", "green", [ "h11.7", "v99.25", "h146.81" ] ],
+    [ "drv1:1A", "stepper1:B+", "green", [ "h19.17", "v99.35", "h129.73" ] ],
+    [ "drv1:2A", "stepper1:A+", "green", [ "h26.64", "v100.8", "h112.66" ] ],
+    [ "drv1:2B", "stepper1:A-", "green", [ "h33.43", "v102.92", "h96.27" ] ]
+  ],
+  "dependencies": {}
+}
